@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 閻?劍鍩涢幓鎰?唉
+ * 问题提交类
  */
 @Getter
 @Setter
@@ -17,42 +17,42 @@ public class QuestionSubmit {
     private Long id;
 
     /**
-     * 妫版?娲?id
+     * 题目id
      */
     private Long questionid;
 
     /**
-     * 閻?劍鍩?id
+     * 提交者id
      */
     private Long userid;
 
     /**
-     * 缂傛牜鈻肩拠顓♀枅
+     * 使用代码语言
      */
     private String language;
 
     /**
-     * 閻?劍鍩涙禒锝囩垳
+     * 代码内容
      */
     private String code;
 
     /**
-     * 閸掋倝顣芥穱鈩冧紖(json)
+     * 判题信息
      */
     private String judgeinfo;
 
     /**
-     * 閻樿埖锟斤拷 0:瀵板懎鍨芥０锟?1:閸掋倝顣芥稉锟?2:闁?俺绻?3:閺堫亪锟芥俺绻
+     * 评测结果 0-未评测 1-判题中 2-通过 3-未通过
      */
     private Long status;
 
     /**
-     * 閸掓稑缂撻弮鍫曟？
+     * 创建时间
      */
     private Date createtime;
 
     /**
-     * 閺囧瓨鏌婇弮鍫曟？
+     * 更新时间
      */
     private Date updatetime;
 }
