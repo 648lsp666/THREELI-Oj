@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yupi.threelioj.mapper.QuestionMapper">
+    <resultMap id="BaseResultMap" type="com.yupi.threelioj.model.entity.Question">
+        <!--@mbg.generated-->
+        <!--@Table question-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="content" jdbcType="LONGVARCHAR" property="content"/>
+        <result column="tags" jdbcType="VARCHAR" property="tags"/>
+        <result column="answer" jdbcType="LONGVARCHAR" property="answer"/>
+        <result column="submitNum" jdbcType="INTEGER" property="submitnum"/>
+        <result column="acceptedNum" jdbcType="INTEGER" property="acceptednum"/>
+        <result column="judgeConfig" jdbcType="LONGVARCHAR" property="judgeconfig"/>
+        <result column="judgeCase" jdbcType="LONGVARCHAR" property="judgecase"/>
+        <result column="thumbNum" jdbcType="INTEGER" property="thumbnum"/>
+        <result column="favourNum" jdbcType="INTEGER" property="favournum"/>
+        <result column="userId" jdbcType="BIGINT" property="userid"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createtime"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime"/>
+        <result column="isDelete" jdbcType="TINYINT" property="isdelete"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, title, content, tags, answer, submitNum, acceptedNum, judgeConfig, judgeCase,
+        thumbNum, favourNum, userId, createTime, updateTime, isDelete
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from question
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete from question
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.yupi.threelioj.model.entity.Question"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into question (title, content, tags,
+        answer, submitNum, acceptedNum,
+        judgeConfig, judgeCase, thumbNum,
+        favourNum, userId, createTime,
+        updateTime, isDelete)
+        values (#{title,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}, #{tags,jdbcType=VARCHAR},
+        #{answer,jdbcType=LONGVARCHAR}, #{submitnum,jdbcType=INTEGER}, #{acceptednum,jdbcType=INTEGER},
+        #{judgeconfig,jdbcType=LONGVARCHAR}, #{judgecase,jdbcType=LONGVARCHAR}, #{thumbnum,jdbcType=INTEGER},
+        #{favournum,jdbcType=INTEGER}, #{userid,jdbcType=BIGINT}, #{createtime,jdbcType=TIMESTAMP},
+        #{updatetime,jdbcType=TIMESTAMP}, #{isdelete,jdbcType=TINYINT})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.yupi.threelioj.model.entity.Question" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into question
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="title != null">
+                title,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="tags != null">
+                tags,
+            </if>
+            <if test="answer != null">
+                answer,
+            </if>
+            <if test="submitnum != null">
+                submitNum,
+            </if>
+            <if test="acceptednum != null">
+                acceptedNum,
+            </if>
+            <if test="judgeconfig != null">
+                judgeConfig,
+            </if>
+            <if test="judgecase != null">
+                judgeCase,
+            </if>
+            <if test="thumbnum != null">
+                thumbNum,
+            </if>
+            <if test="favournum != null">
+                favourNum,
+            </if>
+            <if test="userid != null">
+                userId,
+            </if>
+            <if test="createtime != null">
+                createTime,
+            </if>
+            <if test="updatetime != null">
+                updateTime,
+            </if>
+            <if test="isdelete != null">
+                isDelete,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="tags != null">
+                #{tags,jdbcType=VARCHAR},
+            </if>
+            <if test="answer != null">
+                #{answer,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="submitnum != null">
+                #{submitnum,jdbcType=INTEGER},
+            </if>
+            <if test="acceptednum != null">
+                #{acceptednum,jdbcType=INTEGER},
+            </if>
+            <if test="judgeconfig != null">
+                #{judgeconfig,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="judgecase != null">
+                #{judgecase,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="thumbnum != null">
+                #{thumbnum,jdbcType=INTEGER},
+            </if>
+            <if test="favournum != null">
+                #{favournum,jdbcType=INTEGER},
+            </if>
+            <if test="userid != null">
+                #{userid,jdbcType=BIGINT},
+            </if>
+            <if test="createtime != null">
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null">
+                #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isdelete != null">
+                #{isdelete,jdbcType=TINYINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yupi.threelioj.model.entity.Question">
+        <!--@mbg.generated-->
+        update question
+        <set>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="tags != null">
+                tags = #{tags,jdbcType=VARCHAR},
+            </if>
+            <if test="answer != null">
+                answer = #{answer,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="submitnum != null">
+                submitNum = #{submitnum,jdbcType=INTEGER},
+            </if>
+            <if test="acceptednum != null">
+                acceptedNum = #{acceptednum,jdbcType=INTEGER},
+            </if>
+            <if test="judgeconfig != null">
+                judgeConfig = #{judgeconfig,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="judgecase != null">
+                judgeCase = #{judgecase,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="thumbnum != null">
+                thumbNum = #{thumbnum,jdbcType=INTEGER},
+            </if>
+            <if test="favournum != null">
+                favourNum = #{favournum,jdbcType=INTEGER},
+            </if>
+            <if test="userid != null">
+                userId = #{userid,jdbcType=BIGINT},
+            </if>
+            <if test="createtime != null">
+                createTime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null">
+                updateTime = #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isdelete != null">
+                isDelete = #{isdelete,jdbcType=TINYINT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yupi.threelioj.model.entity.Question">
+        <!--@mbg.generated-->
+        update question
+        set title = #{title,jdbcType=VARCHAR},
+        content = #{content,jdbcType=LONGVARCHAR},
+        tags = #{tags,jdbcType=VARCHAR},
+        answer = #{answer,jdbcType=LONGVARCHAR},
+        submitNum = #{submitnum,jdbcType=INTEGER},
+        acceptedNum = #{acceptednum,jdbcType=INTEGER},
+        judgeConfig = #{judgeconfig,jdbcType=LONGVARCHAR},
+        judgeCase = #{judgecase,jdbcType=LONGVARCHAR},
+        thumbNum = #{thumbnum,jdbcType=INTEGER},
+        favourNum = #{favournum,jdbcType=INTEGER},
+        userId = #{userid,jdbcType=BIGINT},
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+        isDelete = #{isdelete,jdbcType=TINYINT}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>

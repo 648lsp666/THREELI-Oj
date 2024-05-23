@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yupi.threelioj.mapper.QuestionSubmitMapper">
+    <resultMap id="BaseResultMap" type="com.yupi.threelioj.model.entity.QuestionSubmit">
+        <!--@mbg.generated-->
+        <!--@Table question_submit-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="questionId" jdbcType="BIGINT" property="questionid"/>
+        <result column="userId" jdbcType="BIGINT" property="userid"/>
+        <result column="language" jdbcType="VARCHAR" property="language"/>
+        <result column="code" jdbcType="LONGVARCHAR" property="code"/>
+        <result column="judgeInfo" jdbcType="LONGVARCHAR" property="judgeinfo"/>
+        <result column="status" jdbcType="BIGINT" property="status"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createtime"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, questionId, userId, `language`, code, judgeInfo, `status`, createTime, updateTime
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from question_submit
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete from question_submit
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.yupi.threelioj.model.entity.QuestionSubmit"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into question_submit (questionId, userId, `language`,
+        code, judgeInfo, `status`,
+        createTime, updateTime)
+        values (#{questionid,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT}, #{language,jdbcType=VARCHAR},
+        #{code,jdbcType=LONGVARCHAR}, #{judgeinfo,jdbcType=LONGVARCHAR}, #{status,jdbcType=BIGINT},
+        #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.yupi.threelioj.model.entity.QuestionSubmit" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into question_submit
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="questionid != null">
+                questionId,
+            </if>
+            <if test="userid != null">
+                userId,
+            </if>
+            <if test="language != null">
+                `language`,
+            </if>
+            <if test="code != null">
+                code,
+            </if>
+            <if test="judgeinfo != null">
+                judgeInfo,
+            </if>
+            <if test="status != null">
+                `status`,
+            </if>
+            <if test="createtime != null">
+                createTime,
+            </if>
+            <if test="updatetime != null">
+                updateTime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="questionid != null">
+                #{questionid,jdbcType=BIGINT},
+            </if>
+            <if test="userid != null">
+                #{userid,jdbcType=BIGINT},
+            </if>
+            <if test="language != null">
+                #{language,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="judgeinfo != null">
+                #{judgeinfo,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=BIGINT},
+            </if>
+            <if test="createtime != null">
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null">
+                #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yupi.threelioj.model.entity.QuestionSubmit">
+        <!--@mbg.generated-->
+        update question_submit
+        <set>
+            <if test="questionid != null">
+                questionId = #{questionid,jdbcType=BIGINT},
+            </if>
+            <if test="userid != null">
+                userId = #{userid,jdbcType=BIGINT},
+            </if>
+            <if test="language != null">
+                `language` = #{language,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                code = #{code,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="judgeinfo != null">
+                judgeInfo = #{judgeinfo,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="status != null">
+                `status` = #{status,jdbcType=BIGINT},
+            </if>
+            <if test="createtime != null">
+                createTime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null">
+                updateTime = #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yupi.threelioj.model.entity.QuestionSubmit">
+        <!--@mbg.generated-->
+        update question_submit
+        set questionId = #{questionid,jdbcType=BIGINT},
+        userId = #{userid,jdbcType=BIGINT},
+        `language` = #{language,jdbcType=VARCHAR},
+        code = #{code,jdbcType=LONGVARCHAR},
+        judgeInfo = #{judgeinfo,jdbcType=LONGVARCHAR},
+        `status` = #{status,jdbcType=BIGINT},
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+        updateTime = #{updatetime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>
