@@ -20,15 +20,17 @@
 <style scoped>
 #basicLayout {
 }
+
 #basicLayout .header {
 }
+
 #basicLayout .content {
-  background: #42b983;
 }
+
 #basicLayout .footer {
-  background: linear-gradient(to bottom, #fffffe, aliceblue);
-  position: fixed;
-  bottom: 0;
+  background: linear-gradient(to bottom, transparent, aliceblue);
+  position: sticky;
+  bottom: calc(-100%);
   left: 0;
   right: 0;
   text-align: center;

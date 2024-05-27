@@ -4,6 +4,13 @@ axios.interceptors.request.use(
   function (config) {
     // 在发送请求之前做些什么
     console.log(config);
+    if (config.method === "get") {
+      config.params = {
+        ...config.params,
+        t: Date.now(),
+      };
+    }
+
     return config;
   },
   function (error) {

@@ -1,22 +1,5 @@
 <template>
-  <div id="userLayout">
-    <a-layout style="height: 100vh">
-      <a-layout-header class="header">
-        <img class="logo" src="@/assets/logo.png" alt="logo" />
-        <div class="title">
-          <a-typography-title
-            :level="2"
-            style="margin: 15px; color: #000"
-            class="title"
-          >
-            3l's OJ
-          </a-typography-title>
-        </div>
-      </a-layout-header>
-      <a-layout-content class="content">
-        <router-view />
-      </a-layout-content>
-    </a-layout>
+  <div id="questionlayout">
     <a-layout-footer class="footer">
       Written by
       <a href="https://github.com/648lsp666" target="_blank" class="herf">
@@ -27,31 +10,31 @@
 </template>
 
 <style scoped>
-#userLayout {
+#questionlayout {
 }
 
-#userLayout .header {
+#questionlayout .header {
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 0.5;
 }
 
-#userLayout .logo {
+#questionlayout .logo {
   box-shadow: #0000331f 3px 5px 2px;
   border-radius: 50%;
   height: 64px;
   cursor: pointer;
 }
 
-#userLayout .content {
+#questionlayout .content {
   display: flex;
   justify-content: center;
   border-radius: 15px;
   height: auto;
 }
 
-#userLayout .footer {
+#questionlayout .footer {
   background: linear-gradient(to bottom, transparent, aliceblue);
   position: fixed;
   bottom: 0;

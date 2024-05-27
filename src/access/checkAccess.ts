@@ -1,4 +1,5 @@
 import ACCESS_ENUM from "@/access/accessEnum";
+
 /**
  * Check access
  * @param loginUser 当前登录用户

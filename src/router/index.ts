@@ -6,7 +6,7 @@ import UserLayout from "../../layouts/UserLayout.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/user",
-    name: "user",
+    name: "用户页",
     meta: {
       access: ACCESS_ENUM.NOT_LOGIN,
       hideInMenu: true,
@@ -14,7 +14,7 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       {
         path: "/user/login",
-        name: "login",
+        name: "登录",
         component: () =>
           import(/* webpackChunkName: "about" */ "../views/User/LoginView.vue"),
         props: {},
@@ -25,7 +25,7 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: "/user/register",
-        name: "register",
+        name: "注册",
         component: () =>
           import(
             /* webpackChunkName: "about"*/ "../views/User/RegisterView.vue"
@@ -38,8 +38,42 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   {
+    path: "/question/add",
+    name: "添加题目",
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ "../views/Question/admin/AddQuestionView.vue"
+      ),
+    meta: {
+      access: ACCESS_ENUM.ADMIN,
+    },
+  },
+  {
+    path: "/question/manage",
+    name: "管理题目",
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ "../views/Question/admin/ManageQuestionView.vue"
+      ),
+    meta: {
+      access: ACCESS_ENUM.ADMIN,
+    },
+  },
+  {
+    path: "/question/update/:id",
+    name: "修改题目",
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ "../views/Question/admin/UpdateQuestionView.vue"
+      ),
+    meta: {
+      access: ACCESS_ENUM.ADMIN,
+      hideInMenu: true,
+    },
+  },
+  {
     path: "/",
-    name: "home",
+    name: "主页",
     component: HomeView,
     meta: {
       access: ACCESS_ENUM.NOT_LOGIN,
@@ -47,7 +81,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/admin",
-    name: "admin",
+    name: "管理员",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/AdminView.vue"),
     meta: {
@@ -55,13 +89,15 @@ const routes: Array<RouteRecordRaw> = [
     },
   },
   {
-    path: "/about",
-    name: "about",
+    path: "/problemset",
+    name: "题库",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+      import(
+        /* webpackChunkName: "about" */ "../views/Question/user/ProblemSetView.vue"
+      ),
     props: {},
     meta: {
       access: ACCESS_ENUM.NOT_LOGIN,
@@ -69,7 +105,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/noauth",
-    name: "noauth",
+    name: "无权限",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/NoAuthView.vue"),
     props: {},

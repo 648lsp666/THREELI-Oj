@@ -5,8 +5,10 @@ import checkAccess from "@/access/checkAccess";
 
 router.beforeEach(async (to, from, next) => {
   // todo 获取用户信息
-  const loginUser = store.state.user.loginUser;
+  let loginUser = store.state.user.loginUser;
   const needAccess = to.meta?.access ?? ACCESS_ENUM.NOT_LOGIN;
+  console.log("needAccess", needAccess);
+  console.log("loginUser", loginUser);
   /**
    * 如果不需要登录，直接跳转;
    * 如果需要登录，但是用户信息不存在，跳转到登录页
@@ -17,6 +19,8 @@ router.beforeEach(async (to, from, next) => {
     return;
   } else {
     if (!loginUser || !loginUser.userRole) {
+      await store.dispatch("user/getLoginUser");
+      loginUser = store.state.user.loginUser;
       next(`/user/login?redirect=${to.fullPath}`);
     } else if (!checkAccess(loginUser, needAccess as string)) {
       next("/noauth");
@@ -24,15 +28,15 @@ router.beforeEach(async (to, from, next) => {
       next();
     }
   }
-  // /**
-  //  * 如果用户信息不存在，获取用户信息
-  //  */
-  // if (!loginUser || !loginUser.userRole) {
-  //   await store.dispatch("user/getLoginUser");
-  // }
-  // if (!checkAccess(loginUser, needAccess as string)) {
-  //   next("/login");
-  // } else {
-  //   next();
-  // }
+  /**
+   * 如果用户信息不存在，获取用户信息
+   */
+  if (!loginUser || !loginUser.userRole) {
+    await store.dispatch("user/getLoginUser");
+  }
+  if (!checkAccess(loginUser, needAccess as string)) {
+    next("/login");
+  } else {
+    next();
+  }
 });
